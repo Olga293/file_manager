@@ -1,17 +1,30 @@
-import { FileManager } from "fileManager.js";
-import { getUsernameFromArgs, sayHi, sayBye } from "./utils/utils.js";
-import os from "node:os";
+import { createInterface } from 'node:readline/promises';
+import { getUsernameFromArgs, sayHi, sayBye, printCurrentDirectory } from "./utils/utils.js";
+import { executCommand } from './fileManager.js';
 
-console.log(process.argv)
-console.log(process.argv.slice(2));
+const startFileManager = () => {
+    const username = getUsernameFromArgs();
+    sayHi(username);
 
-const username = getUsernameFromArgs();
-sayHi(username);
+    const readline = createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    }); 
 
-process.on('SIGINT', () => {
-    sayBye(username);
-    process.exit()
-});
+    readline.on('line', async (input) => {
+        await executCommand(input);
+        printCurrentDirectory();
+    });
 
-const fileManager = new FileManager(os.homedir());
-await fileManager.start();
+    readline.on('SIGINT', () => {
+        sayBye(username);
+        process.exit()
+    });
+
+}
+
+startFileManager();
+
+
+
+

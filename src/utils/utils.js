@@ -1,3 +1,5 @@
+import { cwd } from 'node:process';
+
 const userNameKey = '--username=';
 const defaultUserName = 'Stranger';
 
@@ -19,4 +21,9 @@ export const sayHi = (username) => {
 
 export const sayBye = (username) => {
     console.log(`Thank you for using File Manager, ${username}, goodbye!`);
+};
+
+export const printCurrentDirectory = () => {
+    const currentDir = cwd();
+    console.log(`You are currently in ${currentDir}`);
 };
