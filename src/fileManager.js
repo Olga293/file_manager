@@ -1,9 +1,10 @@
-import { NWD_OPERATIONS, BASIC_OPERATIONS, OS_OPERATIONS, HASH_OPERATIONS } from './utils/constants.js';
+import { NWD_OPERATIONS, BASIC_OPERATIONS, OS_OPERATIONS, HASH_OPERATIONS, ZIP_OPERATIONS } from './utils/constants.js';
 import { cwd } from 'node:process';
 import { runNwdOperation } from './commands/nwdOperations.js';
 import { runBasicOperation } from './commands/basicOperations.js';
 import { runOsInfoOperation } from './commands/osInfoOperations.js';
 import { runHashOperation } from './commands/hashOperations.js';
+import { runZipOperation } from './commands/zipOperations.js';
 import { printCurrentDirectory } from "./utils/utils.js";
 
 
@@ -36,6 +37,9 @@ export const executCommand = async (userInput) => {
 
         case HASH_OPERATIONS[operationType]:
             await runHashOperation(operationType, args);
+            break;
+        case ZIP_OPERATIONS[operationType]:
+            await runZipOperation(operationType, args);
             break;
 
         default:

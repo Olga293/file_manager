@@ -19,4 +19,9 @@ export const OS_OPERATIONS = {
 
 export const HASH_OPERATIONS = {
     hash: 'hash'
-}
+};
+
+export const ZIP_OPERATIONS = {
+    compress: 'compress',
+    decompress: 'decompress'
+};
