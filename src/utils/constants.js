@@ -12,3 +12,7 @@ export const BASIC_OPERATIONS = {
     mv: 'mv',
     rm: 'rm'
 };
+
+export const OS_OPERATIONS = {
+    os: 'os'
+}
