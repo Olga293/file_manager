@@ -27,3 +27,7 @@ export const printCurrentDirectory = () => {
     const currentDir = cwd();
     console.log(`You are currently in ${currentDir}`);
 };
+
+export const closeReadLine = (readline) => {
+    readline.close();
+};

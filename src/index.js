@@ -17,7 +17,7 @@ const startFileManager = () => {
     }); 
 
     readline.on('line', async (input) => {
-        await executCommand(input);
+        await executCommand(input, readline, username);
     });
 
     readline.on('SIGINT', () => {
