@@ -1,0 +1,26 @@
+{
+  "name": "file_manager",
+  "version": "1.0.0",
+  "description": "This is file manager",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:test": "npm run start -- --username=Test",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olga293/file_manager.git"
+  },
+  "keywords": [
+    "filemanager",
+    "nodejs"
+  ],
+  "author": "olga293",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Olga293/file_manager/issues"
+  },
+  "homepage": "https://github.com/Olga293/file_manager#readme"
+}
