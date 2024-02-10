@@ -15,4 +15,8 @@ export const BASIC_OPERATIONS = {
 
 export const OS_OPERATIONS = {
     os: 'os'
+};
+
+export const HASH_OPERATIONS = {
+    hash: 'hash'
 }

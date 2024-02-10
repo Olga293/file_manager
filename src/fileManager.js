@@ -1,8 +1,9 @@
-import { NWD_OPERATIONS, BASIC_OPERATIONS, OS_OPERATIONS } from './utils/constants.js';
+import { NWD_OPERATIONS, BASIC_OPERATIONS, OS_OPERATIONS, HASH_OPERATIONS } from './utils/constants.js';
 import { cwd } from 'node:process';
 import { runNwdOperation } from './commands/nwdOperations.js';
 import { runBasicOperation } from './commands/basicOperations.js';
 import { runOsInfoOperation } from './commands/osInfoOperations.js';
+import { runHashOperation } from './commands/hashOperations.js';
 import { printCurrentDirectory } from "./utils/utils.js";
 
 
@@ -31,6 +32,10 @@ export const executCommand = async (userInput) => {
 
         case OS_OPERATIONS[operationType]:
             await runOsInfoOperation(args);
+            break;
+
+        case HASH_OPERATIONS[operationType]:
+            await runHashOperation(operationType, args);
             break;
 
         default:

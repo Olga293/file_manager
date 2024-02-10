@@ -70,30 +70,29 @@ const getCpuArchitecture = async () => {
 
 export const runOsInfoOperation = async (args) => {
     const [flag] = args || [];
-    // try {
+    try {
+        switch (flag) {
+            case '--EOL': 
+                getEOL();
+                break;
+            case '--cpus': 
+                getHostMachineCPU();
+                break;
+            case '--homedir': 
+                getHomeDirrectory();
+                break;
+            case '--username': 
+                getUserName();
+                break;
+            case '--architecture': 
+                getCpuArchitecture();
+                break;
+            default:
+                console.log('Invalid input in OS info operation');
+        }
           
-    // } catch (e) {
-    //     console.log('Error in OS info operation')
-    // }
-
-    switch (flag) {
-        case '--EOL': 
-            getEOL();
-            break;
-        case '--cpus': 
-            getHostMachineCPU();
-            break;
-        case '--homedir': 
-            getHomeDirrectory();
-            break;
-        case '--username': 
-            getUserName();
-            break;
-        case '--architecture': 
-            getCpuArchitecture();
-            break;
-        default:
-            console.log('Invalid input in OS info operation');
+    } catch (e) {
+        console.log('Error in OS info operation')
     }
 
 }
