@@ -1,5 +1,5 @@
 import { createInterface } from 'node:readline/promises';
-import { getUsernameFromArgs, sayHi, sayBye, printCurrentDirectory } from "./utils/utils.js";
+import { getUsernameFromArgs, sayHi, sayBye } from "./utils/utils.js";
 import { executCommand } from './fileManager.js';
 import { homedir } from 'os';
 
@@ -18,7 +18,6 @@ const startFileManager = () => {
 
     readline.on('line', async (input) => {
         await executCommand(input);
-        printCurrentDirectory();
     });
 
     readline.on('SIGINT', () => {

@@ -1,6 +1,9 @@
-import { NWD_OPERATIONS } from './utils/constants.js';
-import {runNwdOperation} from './commands/nwdOperations.js';
+import { NWD_OPERATIONS, BASIC_OPERATIONS } from './utils/constants.js';
 import { cwd } from 'node:process';
+import { runNwdOperation } from './commands/nwdOperations.js';
+import { runBasicOperation } from './commands/basicOperations.js';
+import { printCurrentDirectory } from "./utils/utils.js";
+
 
 export const executCommand = async (userInput) => {
     const [operationType, ...args] = userInput.trim().split(/\s+/g); 
@@ -21,9 +24,13 @@ export const executCommand = async (userInput) => {
             await runNwdOperation(operationType, args, currentDir);
             break;
         
+        case BASIC_OPERATIONS[operationType]:
+            await runBasicOperation(operationType, args);
+            break;
 
         default:
             console.log('Invalid input');
+            printCurrentDirectory();
     }
 
 

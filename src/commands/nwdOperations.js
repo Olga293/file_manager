@@ -2,6 +2,7 @@ import { chdir } from 'node:process';
 import { dirname, normalize } from 'node:path';
 import { homedir } from 'os';
 import { readdir } from 'node:fs/promises';
+import { printCurrentDirectory } from "../utils/utils.js";
 
 const goUpDirrectory = (currentDir) => {
     if (currentDir != homedir()) {
@@ -64,8 +65,6 @@ const dirrectoryContentList = async (currentDir) => {
     }else{
         console.log('Dirrectory is empty');
     }
-
-    
 }
 
 export const runNwdOperation = async (operationType, args, currentDir) => {
@@ -73,18 +72,21 @@ export const runNwdOperation = async (operationType, args, currentDir) => {
         switch (operationType) {
             case 'up': 
                 goUpDirrectory(currentDir);
+                printCurrentDirectory();
                 break;
             case 'cd': 
                 goToDirrectory(args);
+                printCurrentDirectory();
                 break;
             case 'ls': 
-                await dirrectoryContentList(currentDir)
-                break
+                await dirrectoryContentList(currentDir);
+                printCurrentDirectory();
+                break;
             default:
                 console.log('Invalid input in navigation operation');
         }  
     } catch (e) {
-        console.log('Error occurred for Navigation Operation cmdlet')
+        console.log('Error in navigation operation')
     }
 
     
